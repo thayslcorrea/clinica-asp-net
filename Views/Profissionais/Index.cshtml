@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ClinicaApp.Models.Profissional>
+
+@{
+    ViewData["Title"] = "Lista de Profissionais";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Profissional</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Especialidade</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Especialidade</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.IdProfissional" class="btn btn-info btn-sm">Detalhes</a>
+                    <a asp-action="Edit" asp-route-id="@item.IdProfissional" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdProfissional" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

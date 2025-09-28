@@ -1,0 +1,16 @@
+﻿@model ClinicaApp.Models.Profissional
+
+@{
+    ViewData["Title"] = "Detalhes do Profissional";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4>@Model.Nome</h4>
+        <p><strong>Especialidade:</strong> @Model.Especialidade</p>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary mt-3">Voltar</a>

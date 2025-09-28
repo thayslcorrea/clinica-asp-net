@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ClinicaApp.Models.Paciente>
+
+@{
+    ViewData["Title"] = "Lista de Pacientes";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    @if (User.IsInRole("Medico") || User.IsInRole("Nutricionista"))
+    {
+        <a asp-action="Create" class="btn btn-primary">Novo Paciente</a>
+    }
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Profissional Responsável</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Profissional?.Nome</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.IdPaciente" class="btn btn-info btn-sm">Detalhes</a>
+                    <a asp-action="Edit" asp-route-id="@item.IdPaciente" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdPaciente" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
